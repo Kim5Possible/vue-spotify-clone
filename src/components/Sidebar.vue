@@ -30,10 +30,13 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
         </li>
 
         <li>
-          <a href="#" class="hover:text-white flex items-center gap-2">
+          <RouterLink
+            to="/search"
+            class="hover:text-white flex items-center gap-2"
+          >
             <Magnify :size="30" />
             <span>Search</span>
-          </a>
+          </RouterLink>
         </li>
 
         <li>

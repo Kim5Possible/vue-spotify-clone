@@ -1,0 +1,105 @@
+[
+  {
+    "id": 1,
+    "name": "Your top genres",
+    "items": [
+      {
+        "id": 1,
+        "name": "Rock",
+        "image": "../src/assets/img/rock.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Pop",
+        "image": "../src/assets/img/pop.png"
+      },
+      {
+        "id": 3,
+        "name": "Jpop",
+        "image": "../src/assets/img/jpop.jpg"
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "Browse all",
+    "items": [
+      {
+        "id": 1,
+        "name": "Podcasts",
+        "image": "../src/assets/img/podcasts.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Made for you",
+        "image": "../src/assets/img/made-for-you.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Charts",
+        "image": "../src/assets/img/charts.jpg"
+      },
+      {
+        "id": 4,
+        "name": "New releases",
+        "image": "../src/assets/img/new-releases-1.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Mood",
+        "image": "../src/assets/img/mood.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Dance",
+        "image": "../src/assets/img/dance.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Drive",
+        "image": "../src/assets/img/drive.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Workout",
+        "image": "../src/assets/img/workout.jpg"
+      },
+      {
+        "id": 9,
+        "name": "Sleep",
+        "image": "../src/assets/img/sleep.jpg"
+      },
+      {
+        "id": 10,
+        "name": "Focus",
+        "image": "../src/assets/img/focus.jpg"
+      },
+      {
+        "id": 11,
+        "name": "Chill",
+        "image": "../src/assets/img/chill.jpg"
+      },
+      {
+        "id": 12,
+        "name": "New releases",
+        "image": "../src/assets/img/new-releases-2.png"
+      },
+      {
+        "id": 13,
+        "name": "Lofi",
+        "image": "../src/assets/img/lofi.jpg"
+      },
+      {
+        "id": 14,
+        "name": "Gaming",
+        "image": "../src/assets/img/gaming.jpg"
+      },
+      {
+        "id": 15,
+        "name": "Old",
+        "image": "../src/assets/img/old.jpg"
+      }
+    ]
+  }
+]

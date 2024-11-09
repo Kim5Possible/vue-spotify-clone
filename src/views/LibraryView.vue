@@ -27,7 +27,10 @@ onMounted(() => {
     <div class="p-8">
       <div class="py-1.5"></div>
       <div class="flex items-center w-full relative h-full mb-3">
-        <img width="140" :src="artist.albumCover" />
+        <img
+          :src="artist.albumCover"
+          class="w-[140px] shadow-[0px_0px_20px_10px_rgba(0,0,0,0.4)] rounded-sm"
+        />
         <div class="w-full ml-5">
           <div class="flex flex-col gap-2">
             <span class="text-[13px] uppercase">album</span>
@@ -36,8 +39,11 @@ onMounted(() => {
             >
               {{ artist.album }}
             </span>
-            <div class="hover:underline cursor-pointer">
-              <span class="text-[#b3b3b3]">By </span>{{ artist.artist }}
+            <div>
+              <span class="text-[#b3b3b3]">By </span
+              ><span class="hover:underline cursor-pointer">{{
+                artist.artist
+              }}</span>
             </div>
             <div class="text-xs text-[#b3b3b3] flex">
               <span>{{ artist.releaseYear }}</span>

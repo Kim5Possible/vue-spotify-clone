@@ -33,8 +33,12 @@ let openMenu = ref(false);
       :class="openMenu ? 'bg-[#282828]' : 'bg-black'"
       class="cursor-pointer bg-black text-sm p-1 rounded-full flex gap-2 items-center"
     >
-      <AccountCircle :size="30" />
-      <span>My Account</span>
+      <img
+        src="https://avatars.githubusercontent.com/u/100800702?v=4"
+        alt="ava"
+        class="w-8 h-8 rounded-full"
+      />
+      <span>Yana</span>
       <ChevronDown v-if="!openMenu" />
       <ChevronUp v-else />
     </button>
