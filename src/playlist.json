@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "name": "Spotify Playlists",
+    "items": [
+      {
+        "id": 1,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/peaceful-view-sunset-light_23-2148851751.jpg?t=st=1731148650~exp=1731152250~hmac=26f5d452d10024148c19b27e003f6059688537356a03bd59797599cb92973f09&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 2,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/spaceman-riding-horse-outer-space-neon-style_23-2151605194.jpg?t=st=1731146907~exp=1731150507~hmac=f77c28ddfaf571842419fb02a588a2d7b16bbc138a77dc992eb94cc409077354&w=826",
+        "description": "Description"
+      },
+      {
+        "id": 3,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-vector/scifi-cyber-vintage-neon-frame-wallpaper-with-equalizer-effect_1017-43047.jpg?t=st=1731146331~exp=1731149931~hmac=4568f4ec60f4dce699b16737c88c702008690d1975edeb8eb4114da3a263e17e&w=826",
+        "description": "Description"
+      },
+      {
+        "id": 4,
+        "name": "Title",
+        "image": "https://img.freepik.com/premium-photo/chamomile-field-sunset_127877-56.jpg?w=740",
+        "description": "Description"
+      },
+      {
+        "id": 5,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/portrait-surreal-sea-creature_23-2151625933.jpg?t=st=1731147147~exp=1731150747~hmac=aae0060db14c687d81d058e6224e558fe20d5a2579446f9307b6efe6fb3a0217&w=360",
+        "description": "Description"
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "Fest and Party",
+    "items": [
+      {
+        "id": 1,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-vector/hand-drawn-flamenco-woman-illustration_23-2150030752.jpg?t=st=1731147277~exp=1731150877~hmac=6345797c6480aa169822db691b4693f2735439f81a564cb6564ff7c1f40701ca&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 2,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-vector/dance-hand-drawn-flat-twerk-illustration_23-2149443369.jpg?t=st=1731147309~exp=1731150909~hmac=16b72b4022423eb76791575bcb7c7be3ab7049b357bb79a5aa1a3feea8cf35cc&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 3,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-vector/illustration-jazz-band-performing_23-2149597416.jpg?t=st=1731147323~exp=1731150923~hmac=9cfd43a96dc4dbb5ea0c83b82f8d82e855c01f80e504e86edea0c6575782923b&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 4,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-vector/flat-design-music-illustration_23-2149643951.jpg?t=st=1731147333~exp=1731150933~hmac=057a0c8f688f9c90f267d005edf67604f862ab03dd69c2197592c69588decafa&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 5,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-vector/hand-drawn-indie-music-illustration_23-2149664738.jpg?t=st=1731147427~exp=1731151027~hmac=4e8cd77e0acbfbd5746148be4bc28136c919b285b932c4d734d17feb93f486a9&w=740",
+        "description": "Description"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Chill Vibes",
+    "items": [
+      {
+        "id": 1,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/cozy-composition-with-cup-coffee-saucer-home-decor-details_169016-9897.jpg?t=st=1731147535~exp=1731151135~hmac=75fdfd3ecd0e8415bd93ad5d4419e37c8adaf2aa5045483178a40a84f8a567bc&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 2,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/crop-woman-with-drink-putting-flower-book_23-2147888758.jpg?t=st=1731147482~exp=1731151082~hmac=46c7f1f401683d704ec382070af26469c686f2e286603358622a187eb2b20c68&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 3,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/candle-with-cup-wooden-chair_23-2147955916.jpg?t=st=1731147603~exp=1731151203~hmac=dfbf7c0afe30dba8bc81144cbf50b2d4a07ab6456f0e98a215a3dbd1e1c4db5d&w=360",
+        "description": "Description"
+      },
+      {
+        "id": 4,
+        "name": "Title",
+        "image": "https://img.freepik.com/free-photo/yellow-armchair-living-room-with-copy-space_43614-940.jpg?t=st=1731147368~exp=1731150968~hmac=c7b0e952d62d8a6c8115949bfa43c274fd9770678ea1d48a663b76e40d2f30fa&w=740",
+        "description": "Description"
+      },
+      {
+        "id": 5,
+        "name": "Title",
+        "image": "https://img.freepik.com/premium-vector/autumn-pattern-with-leaves_639720-138.jpg?w=740",
+        "description": "Description"
+      }
+    ]
+  }
+]
