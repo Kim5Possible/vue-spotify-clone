@@ -1,0 +1,58 @@
+{
+  "artist": "Poets of the Fall",
+  "album": "Ultraviolet",
+  "albumCover": "../src/assets/img/album-cover.jpg",
+  "releaseYear": "2018",
+  "tracks": [
+    {
+      "id": 1,
+      "name": "Dancing on Broken Glass",
+      "path": "../src/assets/audios/Dancing on Broken Glass.mp3"
+    },
+    {
+      "id": 2,
+      "name": "My Dark Disquiet",
+      "path": "../src/assets/audios/My Dark Disquiet.mp3"
+    },
+    {
+      "id": 3,
+      "name": "False Kings",
+      "path": "../src/assets/audios/False Kings.mp3"
+    },
+    {
+      "id": 4,
+      "name": "Fool's Paradise",
+      "path": "../src/assets/audios/Fool's Paradise.mp3"
+    },
+    {
+      "id": 5,
+      "name": "Standstill",
+      "path": "../src/assets/audios/Standstill.mp3"
+    },
+    {
+      "id": 6,
+      "name": "The Sweet Escape",
+      "path": "../src/assets/audios/The Sweet Escape.mp3"
+    },
+    {
+      "id": 7,
+      "name": "Moments Before the Storm",
+      "path": "../src/assets/audios/Moments Before the Storm.mp3"
+    },
+    {
+      "id": 8,
+      "name": "In a Perfect World",
+      "path": "../src/assets/audios/In a Perfect World.mp3"
+    },
+    {
+      "id": 9,
+      "name": "Angel",
+      "path": "../src/assets/audios/Angel.mp3"
+    },
+    {
+      "id": 10,
+      "name": "Choir of Cicadas",
+      "path": "../src/assets/audios/Choir of Cicadas.mp3"
+    }
+  ]
+}

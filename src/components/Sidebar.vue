@@ -13,7 +13,7 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
   >
     <div class="w-[130px] mb-5">
       <a href="#" class="flex items-center text-[#1db954]">
-        <Spotify size="40" />
+        <Spotify :size="40" />
 
         <span class="ml-2 text-xl font-semibold">Spotify</span>
       </a>
@@ -23,7 +23,7 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
       <ul class="flex flex-col gap-4">
         <li>
           <RouterLink to="/" class="hover:text-white flex items-center gap-2">
-            <Home size="30" />
+            <Home :size="30" />
 
             <span>Home</span>
           </RouterLink>
@@ -31,7 +31,7 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
 
         <li>
           <a href="#" class="hover:text-white flex items-center gap-2">
-            <Magnify size="30" />
+            <Magnify :size="30" />
             <span>Search</span>
           </a>
         </li>
@@ -41,7 +41,7 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
             to="/library"
             class="hover:text-white flex items-center gap-2"
           >
-            <MusicBoxMultiple size="30" />
+            <MusicBoxMultiple :size="30" />
             <span>Your Library</span>
           </RouterLink>
         </li>
@@ -52,7 +52,7 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
       <ul class="flex flex-col gap-4">
         <li>
           <a href="#" class="hover:text-white flex items-center gap-2">
-            <PlusBox size="30" />
+            <PlusBox :size="30" />
             <span>Create Playlist</span>
           </a>
         </li>
@@ -62,7 +62,7 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
             <div
               class="ml-[2px] w-[25px] h-[25px] rounded-md bg-gradient-to-br from-[#6c18b1] to-[#4a68f0] flex items-center justify-center"
             >
-              <Heart size="18" />
+              <Heart :size="18" />
             </div>
             <span>Liked Songs</span>
           </a>

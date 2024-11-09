@@ -25,7 +25,7 @@ import playlists from "@/playlist.json";
           </div>
           <PlayCircle
             class="opacity-0 group-hover:opacity-100 group-hover:translate-y-[-20px] duration-300 absolute top-32 right-7 text-[#1ED760]"
-            size="70"
+            :size="70"
           />
           <h4 class="text-white font-semibold mb-2">{{ item.name }}</h4>
           <p>{{ item.description }}</p>
