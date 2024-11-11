@@ -1,5 +1,6 @@
 <script setup>
 import HeartOutline from "vue-material-design-icons/HeartOutline.vue";
+import Heart from "vue-material-design-icons/Heart.vue";
 import SkipNext from "vue-material-design-icons/SkipNext.vue";
 import SkipPrevious from "vue-material-design-icons/SkipPrevious.vue";
 import PlayCircle from "vue-material-design-icons/PlayCircle.vue";
@@ -14,12 +15,48 @@ import VolumeHigh from "vue-material-design-icons/VolumeHigh.vue";
 import VolumeMute from "vue-material-design-icons/VolumeMute.vue";
 
 import { usePlayerStore } from "@/stores/player";
+import { computed, onMounted, ref, watch } from "vue";
+import { storeToRefs } from "pinia";
+import { useLikedStore } from "@/stores/liked";
 
 const store = usePlayerStore();
+const storeLiked = useLikedStore();
+
+const songTimeCurrent = ref(0);
+const songTimeTotal = ref(0);
+
+let intervalId = null;
+
+watch(
+  () => store.audio,
+  (newAudio) => {
+    if (newAudio) {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+
+      intervalId = setInterval(() => {
+        if (newAudio) {
+          const minutes = Math.floor(newAudio.currentTime / 60);
+          const seconds = Math.floor(newAudio.currentTime % 60);
+          songTimeCurrent.value = `${minutes}:${
+            seconds < 10 ? "0" : ""
+          }${seconds}`;
+
+          const minutesTotal = Math.floor(newAudio.duration / 60);
+          const secondsTotal = Math.floor(newAudio.duration % 60);
+          songTimeTotal.value = `${minutesTotal}:${
+            secondsTotal < 10 ? "0" : ""
+          }${secondsTotal}`;
+        }
+      }, 100);
+    }
+  }
+);
 </script>
 
 <template>
-  <section>
+  <section class="relative" v-if="store.currentSong.path">
     <div
       class="fixed z-20 right-0 bottom-0 left-0 h-[70px] flex justify-between items-center bg-[#101010] px-5 py-30"
     >
@@ -30,16 +67,31 @@ const store = usePlayerStore();
           class="w-14 rounded-sm"
         />
         <div class="flex flex-col justify-around">
-          <span class="font-semibold text-white">Song Name</span>
-          <span>Artist</span>
+          <span class="font-semibold text-white">{{
+            store.currentSong.name
+          }}</span>
+          <span>{{ store.currentArtist.artist }}</span>
         </div>
-        <button>
-          <HeartOutline :size="20" />
+        <button
+          type="button"
+          @click="
+            storeLiked.likedSongs.includes(store.currentSong)
+              ? storeLiked.removeSong(store.currentSong)
+              : storeLiked.addSong(store.currentSong)
+          "
+        >
+          <HeartOutline
+            :size="20"
+            v-if="!storeLiked.likedSongs.includes(store.currentSong)"
+          />
+          <Heart class="text-red-500" :size="20" v-else />
         </button>
         <button><PictureInPictureBottomRight :size="20" /></button>
       </div>
 
-      <div class="basis-1/3">
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      >
         <div class="flex gap-4 mb-1 justify-center">
           <button type="button">
             <Shuffle :size="25" />
@@ -62,12 +114,16 @@ const store = usePlayerStore();
           </button>
         </div>
         <div class="flex items-center justify-between gap-2">
-          <span class="text-xs">0:00</span>
+          <span class="text-xs">{{ songTimeCurrent }}</span>
           <input
+            @input="store.updateCurrentTime"
+            :min="0"
+            :max="100"
+            v-model="store.progress"
             type="range"
-            class="w-full h-1 accent-[#1db954] rounded-full focus:outline-none cursor-pointer"
+            class="w-[400px] h-1 thumb-small rounded-full focus:outline-none cursor-pointer"
           />
-          <span class="text-xs">3:00</span>
+          <span class="text-xs">{{ songTimeTotal }}</span>
         </div>
       </div>
       <div class="flex gap-4 items-center">
@@ -85,6 +141,9 @@ const store = usePlayerStore();
         </button> -->
         <input
           type="range"
+          v-model="volume"
+          :min="0"
+          :max="100"
           class="w-full h-1 thumb-hidden accent-white rounded-full focus:outline-none cursor-pointer"
         />
       </div>
@@ -93,15 +152,20 @@ const store = usePlayerStore();
 </template>
 
 <style scoped>
-.thumb-hidden[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0;
-  height: 0;
-}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #5a5a5a;
+  }
 
-.thumb-hidden[type="range"]::-moz-range-thumb {
-  width: 0;
-  height: 0;
+  input[type="range"]::-webkit-slider-thumb {
+    width: 0;
+    -webkit-appearance: none;
+    height: 0;
+
+    background: #383838;
+    box-shadow: -200px 0 0 200px #bebebe;
+  }
 }
 </style>

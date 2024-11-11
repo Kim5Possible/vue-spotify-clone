@@ -5,10 +5,19 @@ import PlayCircle from "vue-material-design-icons/PlayCircle.vue";
 import PauseCircle from "vue-material-design-icons/PauseCircle.vue";
 import ClockTimeThreeOutline from "vue-material-design-icons/ClockTimeThreeOutline.vue";
 import HeartOutline from "vue-material-design-icons/HeartOutline.vue";
+import Heart from "vue-material-design-icons/Heart.vue";
 import DotsHorizontal from "vue-material-design-icons/DotsHorizontal.vue";
 import Songs from "@/components/Songs.vue";
+import { usePlayerStore } from "@/stores/player";
 
 const duration = ref(0);
+const likedPlaylist = ref(false);
+
+const store = usePlayerStore();
+
+function playSong() {
+  store.playSong();
+}
 
 onMounted(() => {
   artist.tracks.forEach((track, index) => {
@@ -22,7 +31,7 @@ onMounted(() => {
 
 <template>
   <section
-    class="text-white ml-[240px] pt-[70px] shadow-[0px_250px_100px_8px_rgba(199,118,255,0.15)_inset]"
+    class="text-white ml-[240px] py-[70px] shadow-[0px_250px_100px_8px_rgba(199,118,255,0.15)_inset]"
   >
     <div class="p-8">
       <div class="py-1.5"></div>
@@ -56,11 +65,25 @@ onMounted(() => {
       </div>
       <div class="flex gap-4 items-center">
         <button class="p-1 rounded-full">
-          <PlayCircle class="text-[#1ED760]" :size="40" />
-          <!-- <PauseCircle v-else fillColor="#181818" :size="25" /> -->
+          <PauseCircle
+            v-if="store.isPlaying"
+            :size="40"
+            @click="store.pauseSong"
+          />
+          <PlayCircle
+            v-else
+            fillColor="#1ED760"
+            :size="40"
+            @click="
+              store.currentSong.path
+                ? store.playSong()
+                : store.setCurrentSong(artist.tracks[0], artist)
+            "
+          />
         </button>
-        <button type="button">
-          <HeartOutline :size="30" />
+        <button type="button" @click="likedPlaylist = !likedPlaylist">
+          <HeartOutline :size="30" v-if="!likedPlaylist" />
+          <Heart class="text-red-500" :size="30" v-else />
         </button>
         <button type="button">
           <DotsHorizontal fillColor="#FFFFFF" :size="25" />
@@ -76,7 +99,12 @@ onMounted(() => {
       </div>
       <div class="border-b border-b-[#2A2A2A] mt-2" />
       <ul class="w-full" v-for="(track, index) in artist.tracks" :key="track">
-        <Songs :track="track" :index="++index" />
+        <Songs
+          :track="track"
+          :artist="artist"
+          :index="++index"
+          @playSong="playSong"
+        />
       </ul>
     </div>
   </section>

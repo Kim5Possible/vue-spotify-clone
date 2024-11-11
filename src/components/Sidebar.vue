@@ -1,10 +1,16 @@
 <script setup>
+import { RouterLink, useRoute } from "vue-router";
 import Home from "vue-material-design-icons/Home.vue";
 import Magnify from "vue-material-design-icons/Magnify.vue";
 import MusicBoxMultiple from "vue-material-design-icons/MusicBoxMultiple.vue";
 import PlusBox from "vue-material-design-icons/PlusBox.vue";
 import Heart from "vue-material-design-icons/Heart.vue";
 import Spotify from "vue-material-design-icons/Spotify.vue";
+
+const isActiveLick = (path) => {
+  const route = useRoute();
+  return route.path === path;
+};
 </script>
 
 <template>
@@ -22,7 +28,13 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
     <div class="mb-5">
       <ul class="flex flex-col gap-4">
         <li>
-          <RouterLink to="/" class="hover:text-white flex items-center gap-2">
+          <RouterLink
+            to="/"
+            :class="[
+              isActiveLick('/') ? 'text-white underline' : 'hover:text-white',
+            ]"
+            class="flex items-center gap-2"
+          >
             <Home :size="30" />
 
             <span>Home</span>
@@ -32,7 +44,12 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
         <li>
           <RouterLink
             to="/search"
-            class="hover:text-white flex items-center gap-2"
+            :class="[
+              isActiveLick('/search')
+                ? 'text-white underline'
+                : 'hover:text-white',
+            ]"
+            class="flex items-center gap-2"
           >
             <Magnify :size="30" />
             <span>Search</span>
@@ -42,7 +59,12 @@ import Spotify from "vue-material-design-icons/Spotify.vue";
         <li>
           <RouterLink
             to="/library"
-            class="hover:text-white flex items-center gap-2"
+            :class="[
+              isActiveLick('/library')
+                ? 'text-white underline'
+                : 'hover:text-white',
+            ]"
+            class="flex items-center gap-2"
           >
             <MusicBoxMultiple :size="30" />
             <span>Your Library</span>

@@ -4,7 +4,7 @@ import uniqolor from "uniqolor";
 </script>
 
 <template>
-  <section class="ml-[240px] pt-[70px]">
+  <section class="ml-[240px] py-[70px]">
     <div v-for="playlist in search" :key="playlist.id" class="px-5 pb-10">
       <h2 class="text-3xl mb-5 text-white font-semibold">
         {{ playlist.name }}
@@ -26,7 +26,7 @@ import uniqolor from "uniqolor";
               ? 'md:basis-1/3 lg:basis-1/3 h-40 mb-2'
               : 'aspect-square'
           "
-          class="bg-[#181818] relative overflow-hidden p-4 rounded-lg cursor-pointer"
+          class="opacity-80 hover:opacity-100 relative overflow-hidden p-4 rounded-lg cursor-pointer"
         >
           <h4 class="text-white font-semibold">{{ item.name }}</h4>
 
