@@ -94,8 +94,11 @@ watch(
         class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       >
         <div class="flex gap-4 mb-1 justify-center">
-          <button type="button">
-            <Shuffle :size="25" />
+          <button type="button" @click="store.shuffleSongs">
+            <Shuffle
+              :size="25"
+              :fillColor="store.shuffle ? '#1db954' : '#b3b3b3'"
+            />
           </button>
           <button type="button" @click="store.prevSong()">
             <SkipPrevious :size="30" />
@@ -110,8 +113,11 @@ watch(
           <button type="button" @click="store.nextSong()">
             <SkipNext :size="30" />
           </button>
-          <button type="button">
-            <Replay :size="25" />
+          <button type="button" @click="store.replaySong">
+            <Replay
+              :size="25"
+              :fillColor="store.replay ? '#1db954' : '#b3b3b3'"
+            />
           </button>
         </div>
         <div class="flex items-center justify-between gap-2">

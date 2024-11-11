@@ -8,6 +8,9 @@ export const usePlayerStore = defineStore("player", () => {
   const isPlaying = ref(false);
   const currentArtist = ref(null);
   const currentProgress = ref(0);
+  const replay = ref(false);
+  const shuffle = ref(false);
+  const shuffledTracksQueue = ref([]);
 
   function setCurrentSong(song, artist) {
     if (isPlaying.value) {
@@ -34,13 +37,18 @@ export const usePlayerStore = defineStore("player", () => {
   }
 
   function nextSong() {
-    const index = artist.tracks.findIndex(
-      (track) => track.path === currentSong.value.path
-    );
-    if (index === artist.tracks.length - 1) {
-      setCurrentSong(artist.tracks[0], artist);
+    console.log(shuffledTracksQueue.value);
+    if (shuffle.value && shuffledTracksQueue.value.length) {
+      setCurrentSong(shuffledTracksQueue.value.shift(), artist);
     } else {
-      setCurrentSong(artist.tracks[index + 1], artist);
+      const index = artist.tracks.findIndex(
+        (track) => track.path === currentSong.value.path
+      );
+      if (index === artist.tracks.length - 1) {
+        setCurrentSong(artist.tracks[0], artist);
+      } else {
+        setCurrentSong(artist.tracks[index + 1], artist);
+      }
     }
   }
 
@@ -53,6 +61,43 @@ export const usePlayerStore = defineStore("player", () => {
       setCurrentSong(artist.tracks[artist.tracks.length - 1], artist);
     } else {
       setCurrentSong(artist.tracks[index - 1], artist);
+    }
+  }
+
+  function replayEnded() {
+    audio.value.currentTime = 0;
+    audio.value.play();
+  }
+
+  function replaySong() {
+    replay.value = !replay.value;
+    if (replay.value) {
+      audio.value.removeEventListener("ended", nextSong);
+      audio.value.addEventListener("ended", replayEnded);
+    } else {
+      audio.value.removeEventListener("ended", replayEnded);
+      audio.value.addEventListener("ended", nextSong);
+    }
+  }
+
+  function shuffleSongs() {
+    shuffle.value = !shuffle.value;
+    if (shuffle.value) {
+      const shuffledTracks = [...artist.tracks];
+      const currentTrack = shuffledTracks.find(
+        (track) => track.path === currentSong.value.path
+      );
+      shuffledTracks.splice(shuffledTracks.indexOf(currentTrack), 1);
+      for (let i = shuffledTracks.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledTracks[i], shuffledTracks[j]] = [
+          shuffledTracks[j],
+          shuffledTracks[i],
+        ];
+      }
+      shuffledTracksQueue.value = shuffledTracks;
+    } else {
+      shuffledTracksQueue.value = [];
     }
   }
 
@@ -78,11 +123,15 @@ export const usePlayerStore = defineStore("player", () => {
     isPlaying,
     currentArtist,
     currentProgress,
+    replay,
+    shuffle,
     setCurrentSong,
     pauseSong,
     playSong,
     nextSong,
     prevSong,
+    replaySong,
+    shuffleSongs,
     updateCurrentTime,
     progress,
   };
