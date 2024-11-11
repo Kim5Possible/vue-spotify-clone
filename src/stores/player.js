@@ -77,6 +77,7 @@ export const usePlayerStore = defineStore("player", () => {
     audio,
     isPlaying,
     currentArtist,
+    currentProgress,
     setCurrentSong,
     pauseSong,
     playSong,

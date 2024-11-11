@@ -15,12 +15,13 @@ import VolumeHigh from "vue-material-design-icons/VolumeHigh.vue";
 import VolumeMute from "vue-material-design-icons/VolumeMute.vue";
 
 import { usePlayerStore } from "@/stores/player";
-import { computed, onMounted, ref, watch } from "vue";
-import { storeToRefs } from "pinia";
+import { ref, watch } from "vue";
 import { useLikedStore } from "@/stores/liked";
+import { useVolumeStore } from "@/stores/volume";
 
 const store = usePlayerStore();
 const storeLiked = useLikedStore();
+const storeVolume = useVolumeStore();
 
 const songTimeCurrent = ref(0);
 const songTimeTotal = ref(0);
@@ -119,7 +120,7 @@ watch(
             @input="store.updateCurrentTime"
             :min="0"
             :max="100"
-            v-model="store.progress"
+            v-model="store.currentProgress"
             type="range"
             class="w-[400px] h-1 thumb-small rounded-full focus:outline-none cursor-pointer"
           />
@@ -127,21 +128,32 @@ watch(
         </div>
       </div>
       <div class="flex gap-4 items-center">
-        <!-- <button type="button">
+        <button
+          type="button"
+          @click="
+            storeVolume.volume === 0
+              ? storeVolume.setVolume(50)
+              : storeVolume.setVolume(0)
+          "
+        >
+          <div v-if="storeVolume.volume > 0 && storeVolume.volume < 30">
             <VolumeLow :size="20" />
-          </button> -->
-        <button type="button">
-          <VolumeMedium :size="20" />
+          </div>
+          <div v-else-if="storeVolume.volume >= 30 && storeVolume.volume < 70">
+            <VolumeMedium :size="20" />
+          </div>
+          <div v-else-if="storeVolume.volume >= 70">
+            <VolumeHigh :size="20" />
+          </div>
+          <div v-else>
+            <VolumeMute :size="20" />
+          </div>
         </button>
-        <!-- <button type="button">
-          <VolumeHigh :size="20" />
-        </button>
-        <button type="button">
-          <VolumeMute :size="20" />
-        </button> -->
+
         <input
           type="range"
-          v-model="volume"
+          v-model="storeVolume.volume"
+          @input="storeVolume.setVolume($event.target.value)"
           :min="0"
           :max="100"
           class="w-full h-1 thumb-hidden accent-white rounded-full focus:outline-none cursor-pointer"
