@@ -22,6 +22,7 @@ function playSong() {
 onMounted(() => {
   artist.tracks.forEach((track, index) => {
     const audio = new Audio(track.path);
+
     audio.onloadeddata = () => {
       duration.value += audio.duration;
     };

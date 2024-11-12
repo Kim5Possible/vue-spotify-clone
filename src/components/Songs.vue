@@ -18,7 +18,7 @@ const { track, index, artist } = props;
 const setCurrentSong = () => {
   store.setCurrentSong(track, artist);
 };
-console.log(track.path);
+
 const formattedDuration = ref("");
 onMounted(() => {
   const audio = new Audio(track.path);

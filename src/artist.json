@@ -7,52 +7,52 @@
     {
       "id": 1,
       "name": "Dancing on Broken Glass",
-      "path": "/vue-spotify-clone/src/assets/audios/Dancing on Broken Glass.mp3"
+      "path": "audios/1.mp3"
     },
     {
       "id": 2,
       "name": "My Dark Disquiet",
-      "path": "/vue-spotify-clone/src/assets/audios/My Dark Disquiet.mp3"
+      "path": "audios/2.mp3"
     },
     {
       "id": 3,
       "name": "False Kings",
-      "path": "/vue-spotify-clone/src/assets/audios/False Kings.mp3"
+      "path": "audios/3.mp3"
     },
     {
       "id": 4,
       "name": "Fool's Paradise",
-      "path": "/vue-spotify-clone/src/assets/audios/Fool's Paradise.mp3"
+      "path": "audios/4.mp3"
     },
     {
       "id": 5,
       "name": "Standstill",
-      "path": "/vue-spotify-clone/src/assets/audios/Standstill.mp3"
+      "path": "audios/5.mp3"
     },
     {
       "id": 6,
       "name": "The Sweet Escape",
-      "path": "/vue-spotify-clone/src/assets/audios/The Sweet Escape.mp3"
+      "path": "audios/6.mp3"
     },
     {
       "id": 7,
       "name": "Moments Before the Storm",
-      "path": "/vue-spotify-clone/src/assets/audios/Moments Before the Storm.mp3"
+      "path": "audios/7.mp3"
     },
     {
       "id": 8,
       "name": "In a Perfect World",
-      "path": "/vue-spotify-clone/src/assets/audios/In a Perfect World.mp3"
+      "path": "audios/8.mp3"
     },
     {
       "id": 9,
       "name": "Angel",
-      "path": "/vue-spotify-clone/src/assets/audios/Angel.mp3"
+      "path": "audios/9.mp3"
     },
     {
       "id": 10,
       "name": "Choir of Cicadas",
-      "path": "/vue-spotify-clone/src/assets/audios/Choir of Cicadas.mp3"
+      "path": "audios/10.mp3"
     }
   ]
 }
