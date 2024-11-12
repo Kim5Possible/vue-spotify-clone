@@ -9,11 +9,12 @@ import Heart from "vue-material-design-icons/Heart.vue";
 import DotsHorizontal from "vue-material-design-icons/DotsHorizontal.vue";
 import Songs from "@/components/Songs.vue";
 import { usePlayerStore } from "@/stores/player";
+import { useLikedStore } from "@/stores/liked";
 
 const duration = ref(0);
-const likedPlaylist = ref(false);
 
 const store = usePlayerStore();
+const storeLiked = useLikedStore();
 
 function playSong() {
   store.playSong();
@@ -28,6 +29,9 @@ onMounted(() => {
     };
   });
 });
+
+store.currentPage = [...artist.tracks];
+store.currentPageType = "library";
 </script>
 
 <template>
@@ -46,7 +50,7 @@ onMounted(() => {
             <span
               class="w-full text-5xl hover:underline cursor-pointer font-semibold"
             >
-              {{ artist.album }}
+              {{ artist.albumName }}
             </span>
             <div>
               <span class="text-[#b3b3b3]">By </span
@@ -81,8 +85,18 @@ onMounted(() => {
             "
           />
         </button>
-        <button type="button" @click="likedPlaylist = !likedPlaylist">
-          <HeartOutline :size="30" v-if="!likedPlaylist" />
+        <button
+          type="button"
+          @click="
+            storeLiked.likedPlaylists.includes(artist.albumName)
+              ? storeLiked.removePlaylist(artist.albumName)
+              : storeLiked.addPlaylist(artist.albumName)
+          "
+        >
+          <HeartOutline
+            :size="30"
+            v-if="!storeLiked.likedPlaylists.includes(artist.albumName)"
+          />
           <Heart class="text-red-500" :size="30" v-else />
         </button>
         <button type="button">

@@ -83,14 +83,17 @@ const isActiveLick = (path) => {
         </li>
 
         <li>
-          <a href="#" class="hover:text-white flex items-center gap-3">
+          <RouterLink
+            to="/liked-songs"
+            class="hover:text-white flex items-center gap-3"
+          >
             <div
               class="ml-[2px] w-[25px] h-[25px] rounded-md bg-gradient-to-br from-[#6c18b1] to-[#4a68f0] flex items-center justify-center"
             >
               <Heart :size="18" />
             </div>
             <span>Liked Songs</span>
-          </a>
+          </RouterLink>
         </li>
       </ul>
     </div>

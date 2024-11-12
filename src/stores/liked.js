@@ -4,9 +4,11 @@ import { ref } from "vue";
 export const useLikedStore = defineStore("liked", () => {
   const likedSongs = ref([]);
   const likedPlaylists = ref([]);
+  const dateAdded = new Date().toLocaleDateString();
 
   function addSong(song) {
     likedSongs.value = [...likedSongs.value, song];
+    song.dateAdded = dateAdded;
   }
 
   function removeSong(song) {
@@ -28,6 +30,7 @@ export const useLikedStore = defineStore("liked", () => {
   return {
     likedSongs,
     likedPlaylists,
+    dateAdded,
     addSong,
     removeSong,
     addPlaylist,

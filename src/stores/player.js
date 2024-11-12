@@ -11,7 +11,9 @@ export const usePlayerStore = defineStore("player", () => {
   const replay = ref(false);
   const shuffle = ref(false);
   const shuffledTracksQueue = ref([]);
-
+  const currentShuffledIndex = ref(0);
+  const currentPage = ref([]);
+  const currentPageType = ref("");
   function setCurrentSong(song, artist) {
     if (isPlaying.value) {
       pauseSong();
@@ -39,30 +41,39 @@ export const usePlayerStore = defineStore("player", () => {
   }
 
   function nextSong() {
-    console.log(shuffledTracksQueue.value);
     if (shuffle.value && shuffledTracksQueue.value.length) {
-      setCurrentSong(shuffledTracksQueue.value.shift(), artist);
+      currentShuffledIndex.value =
+        (currentShuffledIndex.value + 1) % shuffledTracksQueue.value.length;
+      setCurrentSong(
+        shuffledTracksQueue.value[currentShuffledIndex.value],
+        artist
+      );
     } else {
-      const index = artist.tracks.findIndex(
+      const currentIndex = currentPage.value.findIndex(
         (track) => track.path === currentSong.value.path
       );
-      if (index === artist.tracks.length - 1) {
-        setCurrentSong(artist.tracks[0], artist);
-      } else {
-        setCurrentSong(artist.tracks[index + 1], artist);
-      }
+      const nextIndex = (currentIndex + 1) % currentPage.value.length;
+      setCurrentSong(currentPage.value[nextIndex], artist);
     }
   }
 
   function prevSong() {
-    const index = artist.tracks.findIndex(
-      (track) => track.path === currentSong.value.path
-    );
-
-    if (index === 0) {
-      setCurrentSong(artist.tracks[artist.tracks.length - 1], artist);
+    if (shuffle.value && shuffledTracksQueue.value.length) {
+      currentShuffledIndex.value =
+        (currentShuffledIndex.value - 1 + shuffledTracksQueue.value.length) %
+        shuffledTracksQueue.value.length;
+      setCurrentSong(
+        shuffledTracksQueue.value[currentShuffledIndex.value],
+        artist
+      );
     } else {
-      setCurrentSong(artist.tracks[index - 1], artist);
+      const currentIndex = currentPage.value.findIndex(
+        (track) => track.path === currentSong.value.path
+      );
+      const prevIndex =
+        (currentIndex - 1 + currentPage.value.length) %
+        currentPage.value.length;
+      setCurrentSong(currentPage.value[prevIndex], artist);
     }
   }
 
@@ -85,7 +96,7 @@ export const usePlayerStore = defineStore("player", () => {
   function shuffleSongs() {
     shuffle.value = !shuffle.value;
     if (shuffle.value) {
-      const shuffledTracks = [...artist.tracks];
+      const shuffledTracks = [...currentPage.value];
       const currentTrack = shuffledTracks.find(
         (track) => track.path === currentSong.value.path
       );
@@ -98,6 +109,8 @@ export const usePlayerStore = defineStore("player", () => {
         ];
       }
       shuffledTracksQueue.value = shuffledTracks;
+      shuffledTracksQueue.value.unshift(currentTrack);
+      currentShuffledIndex.value = 0;
     } else {
       shuffledTracksQueue.value = [];
     }
@@ -127,6 +140,8 @@ export const usePlayerStore = defineStore("player", () => {
     currentProgress,
     replay,
     shuffle,
+    currentPage,
+    currentPageType,
     setCurrentSong,
     pauseSong,
     playSong,

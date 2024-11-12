@@ -37,8 +37,8 @@ onMounted(() => {
     @click="setCurrentSong"
     class="cursor-pointer flex flex-col justify-between text-white group hover:bg-[#222222] duration-300 rounded-lg"
   >
-    <div class="flex items-center justify-between px-5 h-10">
-      <div class="flex items-center">
+    <div class="text-sm flex items-center justify-between px-5 h-10">
+      <div class="basis-1/4 flex items-center">
         <Play
           v-if="store.currentSong?.path === track.path"
           class="mr-7 w-4 text-[#1db954]"
@@ -51,12 +51,21 @@ onMounted(() => {
           <Play class="mr-7 w-4 group-hover:block hidden" :size="18" />
         </div>
 
-        <div class="text-sm">
+        <div>
           {{ track.name }}
         </div>
       </div>
 
-      <div class="text-[#b3b3b3] text-sm">
+      <div class="basis-1/3 flex items-center justify-between text-[#b3b3b3]">
+        <div v-if="store.currentPageType === 'liked'">
+          {{ artist.albumName }}
+        </div>
+        <div v-if="store.currentPageType === 'liked'">
+          {{ storeLiked.dateAdded }}
+        </div>
+      </div>
+
+      <div class="text-[#b3b3b3]">
         <div class="flex items-center gap-3">
           <button
             v-if="
