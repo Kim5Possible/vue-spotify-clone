@@ -1,6 +1,6 @@
 <script setup>
 import { usePlayerStore } from "@/stores/player";
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, onMounted, ref, toRefs } from "vue";
 import Play from "vue-material-design-icons/Play.vue";
 import Heart from "vue-material-design-icons/Heart.vue";
 import { useLikedStore } from "@/stores/liked";
@@ -18,11 +18,11 @@ const { track, index, artist } = props;
 const setCurrentSong = () => {
   store.setCurrentSong(track, artist);
 };
-
+console.log(track.path);
 const formattedDuration = ref("");
-
 onMounted(() => {
   const audio = new Audio(track.path);
+
   audio.onloadeddata = () => {
     const duration = audio.duration;
     const minutes = Math.floor(duration / 60);

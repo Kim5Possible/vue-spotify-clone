@@ -62,11 +62,7 @@ watch(
       class="fixed z-20 right-0 bottom-0 left-0 h-[70px] flex justify-between items-center bg-[#101010] px-5 py-30"
     >
       <div class="flex gap-3 text-sm items-center">
-        <img
-          src="@/assets/img/album-cover.jpg"
-          alt="cover"
-          class="w-14 rounded-sm"
-        />
+        <img src="/img/album-cover.jpg" alt="cover" class="w-14 rounded-sm" />
         <div class="flex flex-col justify-around">
           <span class="font-semibold text-white">{{
             store.currentSong.name

@@ -34,7 +34,6 @@ onMounted(() => {
     class="text-white ml-[240px] py-[70px] shadow-[0px_250px_100px_8px_rgba(199,118,255,0.15)_inset]"
   >
     <div class="p-8">
-      <div class="py-1.5"></div>
       <div class="flex items-center w-full relative h-full mb-3">
         <img
           :src="artist.albumCover"

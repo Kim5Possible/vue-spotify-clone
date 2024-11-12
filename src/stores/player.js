@@ -21,9 +21,11 @@ export const usePlayerStore = defineStore("player", () => {
     audio.value.src = song.path;
     currentArtist.value = artist;
 
-    audio.value.play();
+    setTimeout(() => {
+      isPlaying.value = true;
+      audio.value.play();
+    });
     audio.value.addEventListener("ended", nextSong);
-    isPlaying.value = true;
   }
 
   function pauseSong() {
